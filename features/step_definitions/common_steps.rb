@@ -11,17 +11,6 @@ Given /^I am user$/ do
   @user = create(:user)
 end
 
-When /^I fill form on sign up page with new data$/ do
-  @user = build(:user)
-  SignUpPage.on do
-    fill_form(username: out(:@user).name,
-              email: out(:@user).email,
-              password: out(:@user).password,
-              looking_for_work_radio: out(:@user).looking_for_work_radio
-              )
-  end
-end
-
 Given /^I am logged in as admin user$/ do
   @user = create(:user, :admin)
   sleep 10
@@ -67,7 +56,8 @@ Then /^I should see following text on (.+) page:$/ do |page, text|
 end
 
 Then /^I should not be logged in the system$/ do
-  expect(HomePage).to be_not_authenticated
+  expect(SignUpPage).to be_displayed
+
 end
 
 Then /^I should be logged in the system$/ do

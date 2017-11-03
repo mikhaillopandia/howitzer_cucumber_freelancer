@@ -14,7 +14,7 @@ Feature: Sign up
     Given sign up page of web application
     When I fill form on sign up page with new data
     And I submit form on sign up page
-    Then onboard page should be displayed
+    Then skills page should be displayed
     And I should receive confirmation instruction email
     When I confirm sing up from confirmation instruction email
     Then I should see following text on verify page:
@@ -38,5 +38,44 @@ Feature: Sign up
       """
       Success! Your email address is now verified.
       """
-    And I should be redirected to home page
+    And I should be redirected to dashboard page
     And I should be logged in the system
+
+  @p1
+  Scenario: user can not sign up with blank data
+    Given sign up page of web application
+    When I fill form on sign up page with blank data
+    And I submit form on sign up page
+    Then I should see following text on sign up page:
+    """
+    Please enter an email address
+    """
+    And I should see following text on sign up page:
+    """
+    Please enter a username
+    """
+    And I should see following text on sign up page:
+    """
+    Please enter a password
+    """
+    And I should see following text on sign up page:
+    """
+    Please select a role
+    """
+
+  @p1
+  Scenario: user can not sign up with incorrect data
+    Given sign up page of web application
+    When I fill form on sign up page with not email data
+    Then I should not be logged in the system
+    When I fill form on sign up page with short password
+    And I submit form on sign up page
+    Then I should not be logged in the system
+    And I should see following text on sign up page:
+     """
+     Please enter a valid email address.
+     """
+    And I should see following text on sign up page:
+     """
+     Password must be 6 characters minimum
+     """

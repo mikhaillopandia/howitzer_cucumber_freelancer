@@ -1,6 +1,6 @@
 require_relative 'demo_app_page'
 
-class SignUpPage < DemoAppPage
+class SignUpPage < Howitzer::Web::Page
   path '/signup'
   validate :title, /\AUser Signup | Freelancer\z/
   validate :url, %r{\/signup\/?\z}
@@ -21,7 +21,11 @@ class SignUpPage < DemoAppPage
     email_input_element.set(email) unless email.nil?
     username_element.set(username) unless username.nil?
     password_input_element.set(password) unless password.nil?
-    looking_for_work_radio.nil? ? looking_to_hire_radio_element.click : looking_for_work_radio_element.click
+    if looking_for_work_radio == 'hire'
+      then looking_to_hire_radio_element.click
+    elsif looking_for_work_radio == 'work'
+      then looking_for_work_radio_element.click
+    end
     self
   end
 
@@ -36,5 +40,4 @@ class SignUpPage < DemoAppPage
     submit_form
     HomePage.given
   end
-
 end

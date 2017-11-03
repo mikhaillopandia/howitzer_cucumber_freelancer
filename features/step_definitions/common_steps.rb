@@ -61,7 +61,5 @@ Then /^I should not be logged in the system$/ do
 end
 
 Then /^I should be logged in the system$/ do
-  Capybara.ignore_hidden_elements = false
-  expect(HomePage).to be_authenticated
-  Capybara.ignore_hidden_elements = true
+  expect(DashboardPage).to be_authenticated
 end

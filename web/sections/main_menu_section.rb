@@ -5,7 +5,6 @@ class MainMenuSection < Howitzer::Web::Section
   element :logo, '.flicon-logo-fullcolor'
   element :menu, '#main_menu'
 
-
   def authenticated?
     has_no_menu_item_element?('Log In')
   end

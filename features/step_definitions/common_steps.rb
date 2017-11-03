@@ -36,12 +36,6 @@ end
 When /^I click (.+?) menu item on (.+) page$/ do |text, page|
   page.on { main_menu_section.choose_menu(text.split.map(&:capitalize)*' ') }
 end
-=begin
-# TODO: Add users login
-When /^I fill form on (.+) page$/ do |page|
-  page.on { fill_form(email: out(:@user).email, password: out(:@user).password, looking_for_work_radio: true) }
-end
-=end
 
 When /^I submit form on (.+) page$/ do |page|
   page.on { submit_form }

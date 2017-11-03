@@ -1,3 +1,6 @@
+####################################
+#              ACTIONS             #
+####################################
 
 When /^I confirm sing up from (.+) email$/ do |email|
   email.as_email_class.find_by_recipient(@user.email).confirm_my_account

@@ -51,8 +51,8 @@ Then /^I should be redirected to (.+) page$/ do |page|
   expect(page).to be_displayed
 end
 
-Then /^I should see following text on (.+) page:$/ do |page, text|
-  page.on { expect(text).to include(text) }
+Then /^I should see following text on (.+) page:$/ do |page, string|
+  page.on { expect(text).to include(string) }
 end
 
 Then /^I should not be logged in the system$/ do

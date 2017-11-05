@@ -27,7 +27,7 @@
 
  # -Selenium-
  # specify one of next browsers: iexplore (ie), firefox (ff), chrome, safari
- selenium_browser: ff
+ selenium_browser: chrome
 
  # -Headless Chrome-
  # List of available flags (http://peter.sh/experiments/chromium-command-line-switches/)

@@ -3,9 +3,9 @@ class ConfirmationEmployerInstructionEmail < Howitzer::Email
 
   def  confirm_my_employer_account
     # Correct solution. Ask Roma about normalize_values for unicode
-    # ConfirmationEmailPage.open(validate: false, url_processor: true, token: token)
+    ConfirmationEmployerEmailPage.open(validate: false, url_processor: InviteIdProcessor, token: token)
     # Hack
-    Capybara.current_session.visit(confirmation_link)
+    # Capybara.current_session.visit(confirmation_link)
   end
 
   def confirmation_link
@@ -15,6 +15,6 @@ class ConfirmationEmployerInstructionEmail < Howitzer::Email
   end
 
   def token
-    confirmation_link[/token=(.+)/, 1]
+    confirmation_link[/\?id=(.+)/, 1]
   end
 end

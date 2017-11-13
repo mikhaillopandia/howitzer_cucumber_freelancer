@@ -6,10 +6,9 @@ Feature: Sign up
   @smoke
   Scenario: user can open sign up page via menu
     Given home page of web application
-    When I click sign up menu item on home page
+    When I click Sign Up menu item on home page
     Then I should be redirected to sign up page
 
-  @p1
   Scenario: user can sign up with correct credentials as employee
     Given sign up page of web application
     When I fill form on sign up page with new data
@@ -21,11 +20,11 @@ Feature: Sign up
       """
       Success! Your email address is now verified.
       """
-    When I click logo menu item on verify page
+    When I click Logo menu item on verify page
     Then jobs page should be displayed
+    And I navigate to dashboard page
     And I should be logged in the system
 
-  @p1
   Scenario: user can sign up with correct credentials as employer
     Given sign up page of web application
     When I fill form on sign up page with new data
@@ -34,11 +33,11 @@ Feature: Sign up
     Then onboard page should be displayed
     And I should receive confirmation employer instruction email
     When I confirm employer sing up from confirmation employer instruction email
-    Then I should see following text on verify page:
+    And I navigate to dashboard page
+    Then I should see following text on dashboard page:
       """
-      Success! Your email address is now verified.
+      I would like to verify my phone number.
       """
-    And I should be redirected to dashboard page
     And I should be logged in the system
 
   @p1

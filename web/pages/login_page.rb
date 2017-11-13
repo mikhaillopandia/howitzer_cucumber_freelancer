@@ -1,4 +1,4 @@
-require_relative 'demo_app_page'
+require_relative 'freelancer_page'
 
 class LoginPage < Howitzer::Web::Page
   path '/login'

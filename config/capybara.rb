@@ -50,6 +50,9 @@ Capybara.register_driver :selenium do |app|
     end
     params[:profile] = ff_profile
   end
+  client = Selenium::WebDriver::Remote::Http::Default.new
+  client.timeout = 200
+  params[:http_client] = client
   Capybara::Selenium::Driver.new app, params
 end
 

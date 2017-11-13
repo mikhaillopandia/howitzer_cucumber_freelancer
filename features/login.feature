@@ -6,5 +6,5 @@ Feature: Log In
   @smoke
   Scenario: user can open login page via menu
     Given home page of web application
-    When I click log in menu item on home page
+    When I click Log In menu item on home page
     Then login page should be displayed

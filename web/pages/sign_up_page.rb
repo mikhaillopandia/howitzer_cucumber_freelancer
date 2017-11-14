@@ -18,9 +18,9 @@ class SignUpPage < Howitzer::Web::Page
     Howitzer::Log.info 'Fill in Login Form with data:' \
                "email: #{email}, username: #{username} password: #{password},"\
                " looking_for_work_radio: #{looking_for_work_radio}"
-    email_input_element.set(email) unless email.nil?
-    username_element.set(username) unless username.nil?
-    password_input_element.set(password) unless password.nil?
+    email_input_element.set(email)
+    username_element.set(username)
+    password_input_element.set(password)
     looking_to_hire_radio_element.click if looking_for_work_radio == 'hire'
     looking_for_work_radio_element.click if looking_for_work_radio == 'work'
   end

@@ -15,7 +15,12 @@ When /^I select (.+) on (.+) page$/ do |_what, page|
 end
 
 When /^I fill form on sign up page with blank data$/ do
-  SignUpPage.on { fill_form }
+  SignUpPage.on do
+    fill_form(username: nil,
+              email: nil,
+              password: nil,
+              looking_for_work_radio: nil)
+  end
 end
 
 When /^I fill form on sign up page with new data$/ do
@@ -28,21 +33,13 @@ When /^I fill form on sign up page with new data$/ do
   end
 end
 
-When /^I fill form on sign up page with not email data$/ do
-  @user = build(:user)
+When /^I fill form on sign up page with incorrect data$/ do
   SignUpPage.on do
-    fill_form(username: out(:@user).name,
+    fill_form(username: '1',
               email: 'test.123456789',
-              password: out(:@user).password,
-              looking_for_work_radio: out(:@user).looking_for_work_radio)
-  end
-end
-
-When /^I fill form on sign up page with short password/ do
-  @user = build(:user)
-  SignUpPage.on do
-    fill_form(password: '1',
-              looking_for_work_radio: out(:@user).looking_for_work_radio)
+              password: '1',
+              looking_for_work_radio: 'work'
+              )
   end
 end
 

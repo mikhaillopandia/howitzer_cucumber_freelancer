@@ -57,17 +57,11 @@ Feature: Sign up
     """
     Please enter a password
     """
-    And I should see following text on sign up page:
-    """
-    Please select a role
-    """
 
   @p1
   Scenario: user can not sign up with incorrect data
     Given sign up page of web application
-    When I fill form on sign up page with not email data
-    Then I should not be logged in the system
-    When I fill form on sign up page with short password
+    When I fill form on sign up page with incorrect data
     And I submit form on sign up page
     Then I should not be logged in the system
     And I should see following text on sign up page:

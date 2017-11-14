@@ -33,3 +33,7 @@ Style/FrozenStringLiteralComment:
 
 Metrics/ModuleLength:
   Max: 150
+
+Metrics/BlockLength:
+  Enabled: false
+  

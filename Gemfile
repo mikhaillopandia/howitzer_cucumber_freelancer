@@ -19,6 +19,6 @@ gem 'cucumber', '~>2.0'
 gem 'cuke_sniffer', require: false
 gem 'syntax'
 
-gem 'rubocop'
 gem 'pry'
 gem 'pry-byebug'
+gem 'rubocop'

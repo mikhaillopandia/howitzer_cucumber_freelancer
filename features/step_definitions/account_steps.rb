@@ -38,8 +38,7 @@ When /^I fill form on sign up page with incorrect data$/ do
     fill_form(username: '1',
               email: 'test.123456789',
               password: '1',
-              looking_for_work_radio: 'work'
-              )
+              looking_for_work_radio: 'work')
   end
 end
 

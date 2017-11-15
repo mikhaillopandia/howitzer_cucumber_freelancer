@@ -55,6 +55,6 @@ Then /^I should see following messages on (.+) page:$/ do |page, table|
     array.last if array.first == 'error'
   end
   res.compact.each do |str|
-    page.on {wait_for(text).to include(str)}
+    page.on { wait_for(text).to include(str) }
   end
 end

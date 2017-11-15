@@ -1,8 +1,5 @@
-require_relative 'freelancer_page'
-
 class SignUpPage < Howitzer::Web::Page
   path '/signup'
-  validate :title, /\AUser Signup | Freelancer\z/
   validate :url, %r{\/signup\/?\z}
 
   element :email_input, :fillable_field, 'new-email'
@@ -14,15 +11,15 @@ class SignUpPage < Howitzer::Web::Page
   element :looking_for_work_radio, :radio_button, 'looking_for_work'
   element :looking_to_hire_radio, :radio_button, 'looking_to_hire'
 
-  def fill_form(email: nil, username: nil, password: nil, looking_for_work_radio: nil)
+  def fill_form(email: nil, username: nil, password: nil, looking_for: nil)
     Howitzer::Log.info 'Fill in Login Form with data:' \
                "email: #{email}, username: #{username} password: #{password},"\
-               " looking_for_work_radio: #{looking_for_work_radio}"
+               " looking_for: #{looking_for}"
     email_input_element.set(email)
     username_element.set(username)
     password_input_element.set(password)
-    looking_to_hire_radio_element.click if looking_for_work_radio == 'hire'
-    looking_for_work_radio_element.click if looking_for_work_radio == 'work'
+    looking_to_hire_radio_element.click if looking_for == 'hire'
+    looking_for_work_radio_element.click if looking_for == 'work'
   end
 
   def submit_form

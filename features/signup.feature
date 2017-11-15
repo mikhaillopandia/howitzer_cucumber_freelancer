@@ -58,6 +58,6 @@ Feature: Sign up
     And I submit form on sign up page
     Then I should not be logged in the system
     Then I should see following messages on sign up page:
-    | type  | message                               |
-    | error | Please enter a valid email address    |
-    | error | Password must be 6 characters minimum |
+      | type  | message                               |
+      | error | Please enter a valid email address    |
+      | error | Password must be 6 characters minimum |

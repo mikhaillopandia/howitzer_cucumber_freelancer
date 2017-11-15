@@ -4,6 +4,6 @@ FactoryGirl.define do
     name { "u#{Gen.serial}" }
     password { Howitzer.app_test_pass }
     password_confirmation { Howitzer.app_test_pass }
-    looking_for_work_radio { Howitzer.app_test_user_looking_for_work_radio }
+    looking_for { Howitzer.app_test_user_looking_for }
   end
 end

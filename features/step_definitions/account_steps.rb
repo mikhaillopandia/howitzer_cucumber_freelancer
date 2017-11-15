@@ -19,7 +19,7 @@ When /^I fill form on sign up page with blank data$/ do
     fill_form(username: nil,
               email: nil,
               password: nil,
-              looking_for_work_radio: nil)
+              looking_for: nil)
   end
 end
 
@@ -29,7 +29,7 @@ When /^I fill form on sign up page with new correct data$/ do
     fill_form(username: out(:@user).name,
               email: out(:@user).email,
               password: out(:@user).password,
-              looking_for_work_radio: out(:@user).looking_for_work_radio)
+              looking_for: out(:@user).looking_for)
   end
 end
 
@@ -38,7 +38,7 @@ When /^I fill form on sign up page with incorrect data$/ do
     fill_form(username: '1',
               email: 'test.123456789',
               password: '1',
-              looking_for_work_radio: 'work')
+              looking_for: 'work')
   end
 end
 

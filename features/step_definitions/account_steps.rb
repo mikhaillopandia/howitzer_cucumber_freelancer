@@ -23,7 +23,7 @@ When /^I fill form on sign up page with blank data$/ do
   end
 end
 
-When /^I fill form on sign up page with new data$/ do
+When /^I fill form on sign up page with new correct data$/ do
   @user = build(:user)
   SignUpPage.on do
     fill_form(username: out(:@user).name,
@@ -48,4 +48,13 @@ end
 
 Then /^I should receive (.+) email$/ do |email|
   email.as_email_class.find_by_recipient(@user.email)
+end
+
+Then /^I should see following messages on (.+) page:$/ do |page, table|
+  res = table.raw.map do |array|
+    array.last if array.first == 'error'
+  end
+  res.compact.each do |str|
+    page.on {wait_for(text).to include(str)}
+  end
 end

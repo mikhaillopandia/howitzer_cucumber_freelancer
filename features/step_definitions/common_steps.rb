@@ -31,10 +31,6 @@ end
 #              CHECKS              #
 ####################################
 
-Then /^(?!blank)(.+) page should be displayed$/ do |page|
-  expect(page).to be_displayed
-end
-
 Then /^(?!blank)(.+) page should not be displayed$/ do |page|
   expect(page).not_to be_displayed
 end

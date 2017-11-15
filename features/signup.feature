@@ -11,9 +11,9 @@ Feature: Sign up
 
   Scenario: user can sign up with correct credentials as employee
     Given sign up page of web application
-    When I fill form on sign up page with new data
+    When I fill form on sign up page with new correct data
     And I submit form on sign up page
-    Then skills page should be displayed
+    Then I should be redirected to skills page
     And I should receive confirmation instruction email
     When I confirm sing up from confirmation instruction email
     Then I should see following text on verify page:
@@ -21,16 +21,16 @@ Feature: Sign up
       Success! Your email address is now verified.
       """
     When I click Logo menu item on verify page
-    Then jobs page should be displayed
-    And I navigate to dashboard page
+    Then I should be redirected to jobs page
+    When I navigate to dashboard page
     And I should be logged in the system
 
   Scenario: user can sign up with correct credentials as employer
     Given sign up page of web application
-    When I fill form on sign up page with new data
+    When I fill form on sign up page with new correct data
     And I select looking to hire radio on sign up page
     And I submit form on sign up page
-    Then onboard page should be displayed
+    Then I should be redirected to onboard page
     And I should receive confirmation employer instruction email
     When I confirm employer sing up from confirmation employer instruction email
     And I navigate to dashboard page
@@ -45,18 +45,11 @@ Feature: Sign up
     Given sign up page of web application
     When I fill form on sign up page with blank data
     And I submit form on sign up page
-    Then I should see following text on sign up page:
-    """
-    Please enter an email address
-    """
-    And I should see following text on sign up page:
-    """
-    Please enter a username
-    """
-    And I should see following text on sign up page:
-    """
-    Please enter a password
-    """
+    Then I should see following messages on sign up page:
+      | type  | message                       |
+      | error | Please enter an email address |
+      | error | Please enter a username       |
+      | error | Please enter a password       |
 
   @p1
   Scenario: user can not sign up with incorrect data
@@ -64,11 +57,7 @@ Feature: Sign up
     When I fill form on sign up page with incorrect data
     And I submit form on sign up page
     Then I should not be logged in the system
-    And I should see following text on sign up page:
-     """
-     Please enter a valid email address.
-     """
-    And I should see following text on sign up page:
-     """
-     Password must be 6 characters minimum
-     """
+    Then I should see following messages on sign up page:
+    | type  | message                               |
+    | error | Please enter a valid email address    |
+    | error | Password must be 6 characters minimum |

@@ -7,4 +7,4 @@ Feature: Log In
   Scenario: user can open login page via menu
     Given home page of web application
     When I click Log In menu item on home page
-    Then login page should be displayed
+    Then I should be redirected to login page

@@ -48,5 +48,5 @@ Then /^I should not be logged in the system$/ do
 end
 
 Then /^I should be logged in the system$/ do
-  DashboardPage.on { has_no_main_menu_section? }
+  DashboardPage.on { is_expected.to have_no_main_menu_section }
 end

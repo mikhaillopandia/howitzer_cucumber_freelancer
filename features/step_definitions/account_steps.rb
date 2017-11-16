@@ -51,10 +51,8 @@ Then /^I should receive (.+) email$/ do |email|
 end
 
 Then /^I should see following messages on (.+) page:$/ do |page, table|
-  res = table.raw.map do |array|
-    array.last if array.first == 'error'
-  end
-  res.compact.each do |str|
-    page.on { wait_for(text).to include(str) }
+  str = table.raw.map(&:first)
+  page.on do
+    wait_for(text).to include(str.compact.join(' '))
   end
 end

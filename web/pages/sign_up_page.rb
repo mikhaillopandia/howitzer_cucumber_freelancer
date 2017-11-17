@@ -18,8 +18,8 @@ class SignUpPage < Howitzer::Web::Page
     email_input_element.set(email)
     username_element.set(username)
     password_input_element.set(password)
-    looking_to_hire_radio_element.click if looking_for == 'hire'
-    looking_for_work_radio_element.click if looking_for == 'work'
+    looking_to_hire_radio_element.click if looking_for == 'employer'
+    looking_for_work_radio_element.click if looking_for == 'employee'
   end
 
   def submit_form

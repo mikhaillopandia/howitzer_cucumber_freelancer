@@ -11,7 +11,7 @@ Feature: Sign up
 
   Scenario: user can sign up with correct credentials as employee
     Given sign up page of web application
-    When I fill form on sign up page with new correct data
+    When I fill form on sign up page with new correct data as employee
     And I submit form on sign up page
     Then I should be redirected to skills page
     And I should receive confirmation instruction email
@@ -27,8 +27,7 @@ Feature: Sign up
 
   Scenario: user can sign up with correct credentials as employer
     Given sign up page of web application
-    When I fill form on sign up page with new correct data
-    And I select looking to hire radio on sign up page
+    When I fill form on sign up page with new correct data as employer
     And I submit form on sign up page
     Then I should be redirected to onboard page
     And I should receive confirmation employer instruction email

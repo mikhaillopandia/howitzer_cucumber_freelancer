@@ -1,8 +1,5 @@
-require_relative 'demo_app_page'
-
 class LoginPage < Howitzer::Web::Page
   path '/login'
-  validate :title, /\ALogin to Hire Freelancers & Find Work | Freelancer\z/
   validate :url, %r{\/login\/?\z}
 
   element :email_input, :fillable_field, 'username'
@@ -19,7 +16,6 @@ class LoginPage < Howitzer::Web::Page
     email_input_element.set(email) unless email.nil?
     password_input_element.set(password) unless password.nil?
     remember_me_element.set(true) unless remember_me.nil?
-    self
   end
 
   def submit_form

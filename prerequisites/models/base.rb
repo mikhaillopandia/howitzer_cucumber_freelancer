@@ -1,23 +1,22 @@
-class Base < Spyke::Base
-  BadRequestError = Class.new(StandardError)
-
-  include_root_in_json true
-
-  def self.create(attrs = {})
-    new(attrs).tap(&:save!)
+# The base model. Models allow to communicate with
+# AUT (application under test) api endpoints. They are used by
+# FactoryBot on create
+#
+# To implement a custom model, override the following methods:
+# * {Base.find}
+# * {Base.where}
+# * {Base.save!}
+#
+class Base
+  def self.find(_id)
+    raise NotImplementedError
   end
 
-  def save
-    errors.clear
-    super
-    errors.none?
+  def self.where(_params)
+    raise NotImplementedError
   end
 
   def save!
-    return self if save
-    error_msg = "Impossible to save #{self.class}(#{attributes.except('errors').to_s[/\A\{(.*)\}\z/, 1]}):\n" \
-                "\t\tURI: #{scope.uri}\n" \
-                "\t\tError details: #{errors.details}"
-    raise BadRequestError, error_msg
+    raise NotImplementedError
   end
 end

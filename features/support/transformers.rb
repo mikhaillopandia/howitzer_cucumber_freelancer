@@ -5,31 +5,23 @@
 ParameterType(
   name: 'page',
   regexp: /(.+)/,
-  transformer: lambda do |page|
-    page
-  end
+  transformer: ->(page) { page }
 )
 
 ParameterType(
   name: 'menu item',
   regexp: /(.+?)/,
-  transformer: lambda do |menu_intem|
-    menu_intem
-  end
+  transformer: ->(menu_intem) { menu_intem }
 )
 
 ParameterType(
   name: 'email',
   regexp: /(.+)/,
-  transformer: lambda do |email|
-    email
-  end
+  transformer: ->(email) { email }
 )
 
 ParameterType(
   name: 'employment type',
   regexp: /(.+)/,
-  transformer: lambda do |email|
-    email
-  end
+  transformer: ->(type) { type }
 )

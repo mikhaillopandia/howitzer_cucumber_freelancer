@@ -2,15 +2,15 @@
 #              ACTIONS             #
 ####################################
 
-When /^I confirm sing up from (.+) email$/ do |email|
+When 'I confirm sing up from {email} email' do |email|
   email.as_email_class.find_by_recipient(@user.email).confirm_my_account
 end
 
-When /^I confirm employer sing up from (.+) email$/ do |email|
+When 'I confirm employer sing up from {email} email' do |email|
   email.as_email_class.find_by_recipient(@user.email).confirm_my_employer_account
 end
 
-When /^I fill form on sign up page with blank data$/ do
+When 'I fill form on sign up page with blank data' do
   SignUpPage.on do
     fill_form(username: nil,
               email: nil,
@@ -19,7 +19,7 @@ When /^I fill form on sign up page with blank data$/ do
   end
 end
 
-When /^I fill form on sign up page with new correct data as (.+)$/ do |who|
+When 'I fill form on sign up page with new correct data as {employment type}' do |who|
   @user = build(:user)
   SignUpPage.on do
     fill_form(username: out(:@user).name,
@@ -29,7 +29,7 @@ When /^I fill form on sign up page with new correct data as (.+)$/ do |who|
   end
 end
 
-When /^I fill form on sign up page with incorrect data$/ do
+When 'I fill form on sign up page with incorrect data' do
   SignUpPage.on do
     fill_form(username: '1',
               email: 'test.123456789',
@@ -42,11 +42,11 @@ end
 #              CHECKS              #
 ####################################
 
-Then /^I should receive (.+) email$/ do |email|
+Then 'I should receive {email} email' do |email|
   email.as_email_class.find_by_recipient(@user.email)
 end
 
-Then /^I should see following messages on (.+) page:$/ do |page, table|
+Then 'I should see following messages on {page} page:' do |page, table|
   str = table.raw.map(&:first)
   page.on do
     wait_for(text).to include(str.compact.join(' '))

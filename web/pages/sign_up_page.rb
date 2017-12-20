@@ -1,4 +1,6 @@
-class SignUpPage < Howitzer::Web::Page
+require_relative 'freelancer_page'
+
+class SignUpPage < FreelancerPage
   path '/signup'
   validate :url, %r{\/signup\/?\z}
 

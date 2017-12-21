@@ -11,5 +11,5 @@ jobs:
         - run: bundle install
         - run: bundle exec rake features:smoke
         - store_artifacts:
-          path: ~/howitzer_cucumber_freelancer/log
-          destination: artifact-file
+            path: ~/howitzer_cucumber_freelancer/log
+            destination: artifact-file
